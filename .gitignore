@@ -1,3 +1,4 @@
+.idea
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -107,3 +108,7 @@ ENV/
 **.txt
 **trained_models/
 
+
+mnist/trained_models/
+
+mnist/data/

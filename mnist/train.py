@@ -212,7 +212,7 @@ if __name__ == "__main__":
                                    lambda_image=args.lambda_image, lambda_text=args.lambda_text,
                                   annealing_factor=annealing_factor)
             train_loss = joint_loss + image_loss + text_loss
-            train_loss_meter.update(train_loss.data[0], batch_size)
+            train_loss_meter.update(train_loss.data, batch_size)
             
             # compute gradients and take step
             train_loss.backward()
@@ -247,7 +247,7 @@ if __name__ == "__main__":
             image_loss = elbo_loss(recon_image_2, image, None, None, mu_2, logvar_2)
             text_loss  = elbo_loss(None, None, recon_text_3, text, mu_3, logvar_3)
             test_loss  = joint_loss + image_loss + text_loss
-            test_loss_meter.update(test_loss.data[0], batch_size)
+            test_loss_meter.update(test_loss.data, batch_size)
 
         print('====> Test Loss: {:.4f}'.format(test_loss_meter.avg))
         return test_loss_meter.avg
